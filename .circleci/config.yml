@@ -6,11 +6,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - run: echo build step
-      - run: mkdir build_output
-      - run: touch build_output/compiled_output.txt
-      - persist_to_workspace:
-          root: build_output
-          paths: '*'
+      
   
   test:
     docker:
@@ -18,31 +14,21 @@ jobs:
     working_directory: ~/repo
     steps:
       - run: echo test step
-      - attach_workspace:
-          at: ~/repo/workspace
-      - run: ls ~/repo/workspace/compiled_output.txt
-      
+    
   deploy:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
       - run: echo deploy step
-      - attach_workspace:
-          at: ~/repo/workspace
-      - run: ls ~/repo/workspace/compiled_output.txt
-  
-  test_enviroment:
+    
+  publish_package:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
-      - run: echo test_enviroment step
-      - attach_workspace:
-          at: ~/repo/workspace
-      - run: ls ~/repo/workspace/compiled_output.txt
-      
-
+      - run: echo publish_package step
+    
 workflows:
   version: 2
   build-and-test:
@@ -58,10 +44,13 @@ workflows:
            branches:
              only:
                - master
-      - test_enviroment:
-          requires:
-            - test
+  publish:
+    jobs:
+      - publish_package:
           filters:
-           branches:
-             ignore:
-               - master
+            tags:
+              only:
+                - /v.*/
+            branches:
+              ignore:
+                - /.*/
