@@ -22,6 +22,7 @@ jobs:
       - run: echo hello kaisoko
       - run: echo additional build task
       - run: echo another test
+      - run: echo holly shit"
       
       #last
       #develop
