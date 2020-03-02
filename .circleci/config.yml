@@ -34,7 +34,7 @@ jobs:
   
   test_enviroment:
     docker:
-      -image: circleci/node:7.10
+      - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
       - run: echo test_enviroment step
