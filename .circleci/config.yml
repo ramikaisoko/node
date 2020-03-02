@@ -50,8 +50,8 @@ workflows:
           filters:
             tags:
               only:
-                - /v.*/
-            branches:
-              ignore:
-                - /.*/
-                #
+                 - /v.*/
+   #          branches:
+    #           ignore:
+    #             - /.*/
+               
