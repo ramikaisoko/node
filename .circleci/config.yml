@@ -31,7 +31,8 @@ jobs:
       - attach_workspace:
           at: ~/repo/workspace
       - run: ls ~/repo/workspace/compiled_output.txt
-   test_enviroment:
+  
+  test_enviroment:
     docker:
       -image: circleci/node:7.10
     working_directory: ~/repo
