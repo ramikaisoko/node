@@ -9,7 +9,7 @@ jobs:
       - run: mkdir build_output
       - run: touch build_output/compiled_output.txt
       - persist_to_workspace:
-          root: build output
+          root: build_output
           paths: '*'
   
   test:
