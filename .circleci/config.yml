@@ -1,69 +1,45 @@
 version: 2
 jobs:
-  build-frontend:
+  build:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
-      - run: echo build-frontend step
-  build-backend:
+      - run: echo build step
+      - run: mkdir build_output
+      - run: touch build_output/compiled_output.txt
+      - persist_to_workspaces:
+          root: build output
+          paths: '*'
+  
+  test:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
-      - run: echo build-backend step
-  test-frontend:
-    docker:
-      - image: circleci/node:7.10
-    working_directory: ~/repo
-    steps:
-      - run: echo test-frontend step
+      - run: echo test step
+      - attach_workspaces:
+          at: ~/repo/workspace
+      - run: ls ~/repo/workspace/compiled_output.txt
       
-  test-backend:
-    docker:
-      - image: circleci/node:7.10
-    working_directory: ~/repo
-    steps:
-      - run: echo test-backend step
-  integration test:
-    docker:
-      - image: circleci/node:7.10
-    working_directory: ~/repo
-    steps:
-      - run: echo integration test step
   deploy:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
       - run: echo deploy step
+      - attach_workspaces:
+          at: ~/repo/workspace
+      - run: ls ~/repo/workspace/compiled_output.txt
 
 workflows:
   version: 2
   build-and-test:
     jobs:
-      - build-frontend
-      - build-backend
-      - test-frontend:
+      - build
+      - test:
           requires:
-            - build-frontend
-      - test-backend:
-          requires:
-            - build-backend
-      - integration test:
-          requires:
-            - build-frontend
-            - build-backend
-      - hold:
-          type: approval
-          requires:
-            - test-frontend
-            - test-backend
-            - integration test
+            - build
       - deploy:
           requires:
-            - hold
-          filters:
-            branches:
-              only:
-                - master
+            - build-and-test
