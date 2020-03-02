@@ -37,6 +37,10 @@ jobs:
     working_directory: ~/repo
     steps:
       - run: echo test_enviroment step
+      - attach_workspace:
+          at: ~/repo/workspace
+      - run: ls ~/repo/workspace/compiled_output.txt
+      
 
 workflows:
   version: 2
