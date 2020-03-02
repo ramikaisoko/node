@@ -21,7 +21,7 @@ jobs:
       - run: npm test
       - run: echo hello kaisoko
       - run: echo additional build task
-      - run: another test
+      - run: echo another test
       
       #last
       #develop
