@@ -1,20 +1,8 @@
-# Introduction 
-TODO: faites une brève présentation de votre projet. Utilisez cette section pour décrire les objectifs ou la motivation à l'origine du projet. 
+# Intro to CircleCI by Floyd May [![CircleCI](https://circleci.com/gh/floyd-may/circleci-intro.svg?style=svg)](https://circleci.com/gh/floyd-may/circleci-intro)
 
-# Bien démarrer
-TODO: aidez les utilisateurs à rendre votre code opérationnel sur leur système. Dans cette section, vous pouvez aborder les points suivants :
-1.	Processus d'installation
-2.	Dépendances logicielles
-3.	Dernières versions Release
-4.	Références API
+This is a project to demonstrate features of CircleCI and how they integrate with GitHub.
 
-# Build et test
-TODO: décrivez et montrez comment générer votre code et exécuter les tests. 
+## A Subheading
 
-# Contribution
-TODO: expliquez comment les autres utilisateurs et développeurs peuvent contribuer à l'amélioration de votre code. 
+This is additional information that goes in the README file.
 
-Pour en savoir plus sur la création de fichiers readme corrects, consultez ces [recommandations](https://docs.microsoft.com/fr-fr/azure/devops/repos/git/create-a-readme?view=azure-devops). Vous pouvez également vous inspirer des fichiers readme ci-dessous :
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
