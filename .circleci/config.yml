@@ -32,12 +32,12 @@ jobs:
           at: ~/repo/workspace
       - run: ls ~/repo/workspace/compiled_output.txt
   
-  test_enviroment:
+  publish_package:
     docker:
       - image: circleci/node:7.10
     working_directory: ~/repo
     steps:
-      - run: echo test_enviroment step
+      - run: echo publish_package step
       - attach_workspace:
           at: ~/repo/workspace
       - run: ls ~/repo/workspace/compiled_output.txt
@@ -58,10 +58,10 @@ workflows:
            branches:
              only:
                - master
-      - test_enviroment:
-          requires:
-            - test
+  publish:
+    jobs:
+      - publish_package:
           filters:
-           branches:
-             ignore:
-               - master
+            tags:
+              only:
+                - /v.*/
