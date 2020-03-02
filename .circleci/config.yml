@@ -48,9 +48,10 @@ workflows:
     jobs:
       - publish_package:
           filters:
-            tags:
+             tags:
               only:
-                - /v.*/
-            branches:
-              ignore:
-                - /.*/
+                 - /v.*/
+             branches:
+               ignore:
+                 - /.*/
+               
