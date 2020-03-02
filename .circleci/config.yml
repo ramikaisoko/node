@@ -8,7 +8,7 @@ jobs:
       - run: echo build step
       - run: mkdir build_output
       - run: touch build_output/compiled_output.txt
-      - persist_to_workspaces:
+      - persist_to_workspace:
           root: build output
           paths: '*'
   
@@ -18,7 +18,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - run: echo test step
-      - attach_workspaces:
+      - attach_workspace:
           at: ~/repo/workspace
       - run: ls ~/repo/workspace/compiled_output.txt
       
@@ -28,7 +28,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - run: echo deploy step
-      - attach_workspaces:
+      - attach_workspace:
           at: ~/repo/workspace
       - run: ls ~/repo/workspace/compiled_output.txt
 
