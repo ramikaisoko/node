@@ -61,7 +61,7 @@ workflows:
       - test_enviroment:
           requires:
             - test
-           filters:
-            branches:
-              ignore:
-                - master
+          filters:
+           branches:
+             ignore:
+               - master
